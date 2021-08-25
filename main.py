@@ -13,7 +13,7 @@ for filename in filenames:
             pass
         else: #if array-position 1 in x does not contain "sendMessageResponse" we continue
             with open('JMeter_IDs.csv', 'a') as f:
-                f.write(x[6].text + '\n') #array-position 6 in x gets written to JMeter_IDs.csv
+                f.write(str(x[6].text) + str('\n')) #array-position 6 in x gets written to JMeter_IDs.csv
             count_found = count_found + 1
 
 print(f"Es wurden {count_found} MessageIDs gefunden und in JMeter_IDs.csv geschrieben.")
@@ -26,6 +26,6 @@ with open('Lost.csv', 'w') as outFile:
     for line in filetwo:
         if line not in fileone:
             outFile.write(line)
-            count_lost = count_ids_lost + 1
+            count_lost = count_lost + 1
 
 print(f"{count_lost} von {count_found} MessageIDs wurden im PSB-Export nicht gefunden und in Lost.csv geschrieben.")
